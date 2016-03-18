@@ -1,0 +1,309 @@
+<style>
+
+	.appViewHolder{
+		position:relative;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		overflow-y:auto;
+	}
+
+	.commonAppviewContainer{
+		position:relative;
+		top:0;
+		left:50%;
+		width:960px;
+		height:auto;
+		background-color:#fff;
+		margin-left:-480px;
+		margin-top:48px;
+		margin-bottom:48px;
+	}
+
+	.descHeadbandContainer{
+		width:100%;
+		height:260px;
+		background-color:#607D8B;
+	}
+
+	.headBandProjectIconContainer{
+		width:100%;
+		height:200px;
+	}
+
+	.commonProjectIcon{
+			margin-top:60px;
+			width:128px;
+			height:128px;
+	}
+
+	.headBandProjectTitleContainer{
+		width:100%;
+		height:60px;
+		padding:20px;
+		box-sizing:border-box;
+	}
+
+	.headBandProjectTitleContainer h1{
+		font-size:30px;
+		color:#fff;
+		font-weight:300;
+	}
+
+	.descContentContainer{
+		width:100%;
+	}
+
+	.descFooterContainer{
+		width:100%;
+		height:60px;
+		border-top:1px solid rgba(175,175,175,0.5);
+	}
+
+	.projectPublishBtn{
+		position:absolute;
+		top:220px;
+		left:calc(50% + 520px);
+	}
+
+	.signatureContainer{
+		width:100%;
+		height:60px;
+	}
+
+	.keyInfoTag{
+		width:330px;
+		height:40px;
+		border-radius:3px;
+		background:#00BCD4;
+	}
+
+	.keyInfoTag span{
+		font-weight:400;
+		color:#fff;
+	}
+
+	.keyInfoTag:nth-child(2){
+		margin-left:20px;
+		background:rgba(0,0,0,0.2);
+	}
+
+	.infoContainer{
+		width:95%;
+		margin-left:2.5%;
+		height:auto;
+	}
+
+	.projectDescriptionContainer{
+		height:auto;
+		font-size:17px;
+		color:rgba(0,0,0,0.8);
+	}
+
+	.projectAbstractInfoContainer{
+		height:auto;
+	}
+
+	.projectCategoryTag{
+		width:95%;
+		margin-left:5%;
+		height:40px;
+		border-radius:3px;
+		background:#607D8B;
+	}
+
+	.projectCategoryTag span{
+		font-weight:400;
+		color:#fff;
+	}
+
+	.projectVersionContainer{
+			width:95%;
+			margin-left:5%;
+			margin-top:10px;
+			color:#fff;
+			background:#00BCD4;
+			border-radius:3px;
+	}
+
+	.projectVersionContainer span{
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+
+	.projectVersionContainer i{
+		font-size:30px;
+		margin-bottom:10px;
+	}
+
+
+	.marketPublishOption{
+		width:100%;
+		height:auto;
+	}
+
+</style>
+
+<div class="view_container">
+	<div class="view_App_wrapper">
+		<md-button ng-click="publish()" ng-show="publishBtnVisible" class="md-fab md-accent projectPublishBtn" aria-label="Publish Project">
+      <md-icon md-svg-icon="icons/ic_cloud_upload_24px.svg"></md-icon>
+			<md-tooltip>Publish Project</md-tooltip>
+    </md-button>
+		<div class="appViewHolder">
+			<div class="commonAppviewContainer md-whiteframe-6dp" layout="column" layout-align="start start">
+				<div class="descHeadbandContainer" layout="column" layout-align="start start">
+					<div class="headBandProjectIconContainer" layout="column" layout-align="center center">
+						<img src="./appicons/{{appKey}}.png" class="commonProjectIcon"/>
+					</div>
+					<div class="headBandProjectTitleContainer" layout="row" layout-align="start center">
+						<h1>{{appDesc.name}}</h1>
+					</div>
+				</div>
+				<div class="descContentContainer">
+					<md-content layout-padding style="width:100%;">
+						<md-subheader class="md-primary">Project Signature</md-subheader>
+						<div class="signatureContainer" layout="row" layout-align="center center">
+							<div class="keyInfoTag md-whiteframe-3dp" layout="row" layout-align="start center">
+								<md-icon style="fill:#fff; margin:0px 10px 0px 10px;" md-svg-icon="icons/ic_vpn_key_24px.svg"></md-icon>
+								<span>{{appDesc.appKey}}</span>
+								<md-tooltip>Project Key</md-tooltip>
+							</div>
+							<div class="keyInfoTag md-whiteframe-1dp" layout="row" layout-align="start center">
+								<md-icon style="fill:#fff; margin:0px 10px 0px 10px;" md-svg-icon="icons/ic_visibility_off_24px.svg"></md-icon>
+								<span>{{appDesc.secretKey}}</span>
+								<md-tooltip>Project Secret Key</md-tooltip>
+							</div>
+						</div>
+						<md-subheader class="md-primary">Project Info</md-subheader>
+						<div class="infoContainer" layout="row" layout-align="start start">
+							<div class="projectDescriptionContainer" flex="80">
+								<p>{{appDesc.description}}</p>
+							</div>
+							<div class="projectAbstractInfoContainer" layout="column" layout-align="start center" flex="20">
+								<div class="projectCategoryTag md-whiteframe-3dp" layout="row" layout-align="start center">
+									<md-icon style="fill:#fff; margin:0px 10px 0px 10px;" md-svg-icon="icons/ic_star_24px.svg"></md-icon>
+									<span>{{appDesc.category}}</span>
+									<md-tooltip>Project category</md-tooltip>
+								</div>
+								<div class="projectVersionContainer md-whiteframe-3dp" layout="column" layout-align="start center">
+									<span>Version</span>
+									<div layout="row" layout-align="start start">
+										<i>{{appDesc.version.major}}.</i>
+										<i>{{appDesc.version.minor}}.</i>
+										<i>{{appDesc.version.release}}</i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <md-switch ng-model="publishMarket" aria-label="Publish to Market Place">
+					    Publish this project to the market place ?
+					  </md-switch>
+						<div class="marketPublishOption" ng-show="publishMarket">
+							<md-input-container class="md-block">
+					      <label>Set a price for this project !</label>
+					      <input type="number" ng-model="appDesc.price">
+					    </md-input-container>
+						</div> -->
+					</md-content>
+				</div>
+				<div class="descFooterContainer" layout="row" layout-align="center center">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="tophalf"></div>
+
+<md-toolbar>
+	<md-fab-actions class="md-toolbar-tools">
+		<md-button class="md-icon-button" ng-click="edit()">
+			<md-icon><ng-md-icon icon="developer_mode" size="32"></ng-md-icon></md-icon>
+			<md-tooltip>Edit</md-tooltip>
+		</md-button>
+		<md-button class="md-icon-button" ng-click="save()">
+			<md-icon><ng-md-icon icon="save" size="32"></ng-md-icon></md-icon>
+			<md-tooltip>Save</md-tooltip>
+		</md-button>
+</md-toolbar>
+
+<div align="center" class="partialparent" ng-cloak>
+	<div class="partialcontent">
+		<md-content layout-padding="">
+
+			<form name="userForm">
+			<md-input-container flex="">
+				<label>App Title</label>
+				<input ng-model="appDesc.name" disabled="disabled">
+			</md-input-container>
+
+				<div layout="" layout-sm="column" style="height:170px;">
+					<md-input-container flex="">
+						<div>
+							<table width="100%">
+								<tr style="vertical-align:top;">
+									<td rowspan="3" width="200">
+										<div>
+											<img src="./appicons/{{appKey}}.png" ng-src="{{imageSrc}}" ng-err-src="./appicons/default.png" class="uploadthumbnail"/>
+											<input type="file" ng-file-select="onFileSelect" accept="image/gif, image/jpeg, image/png"/>
+										</div>
+									</td>
+								</tr>
+								<tr><td>
+									<div layout="" layout-sm="column">
+										<md-input-container flex="">
+											<label>App Key</label>
+											<input ng-model="appDesc.appKey" disabled="">
+										</md-input-container>
+									</div>
+								</td></tr>
+								<tr><td>
+									<div layout="" layout-sm="column">
+										<md-input-container flex="">
+											<label>Secret Key</label>
+											<input ng-model="appDesc.secretKey" disabled="">
+										</md-input-container>
+									</div>
+								</td></tr>
+							</table>
+						</div>
+					</md-input-container>
+				</div>
+
+				<md-input-container flex="">
+					<label>Category</label>
+			        <md-select ng-model="appDesc.category">
+		            	<md-option ng-value="ct" ng-repeat="ct in appCategories">
+		            	{{ct}}
+		            	</md-option>
+		        	</md-select>
+				</md-input-container>
+
+				<md-input-container md-no-float="">
+					<label>Description</label>
+					<textarea rows="3" ng-model="appDesc.description"></textarea>
+				</md-input-container>
+
+				<div layout layout-sm="column" layout-margin>
+					<label>Version</label>
+					<md-input-container id="accContainer" flex >
+						<label>Major</label>
+						<input ng-model="appDesc.version.major" placeholder="Major"/>
+					</md-input-container>
+					<md-input-container id="accContainer" flex >
+						<label>Minor</label>
+						<input ng-model="appDesc.version.minor" placeholder="Minor"/>
+					</md-input-container>
+					<md-input-container id="accContainer" flex >
+						<label>Release</label>
+						<input ng-model="appDesc.version.release" disabled="disabled"  placeholder="Release">
+					</md-input-container>
+				</div>
+			</form>
+
+		</md-content>
+	</div>
+</div> -->

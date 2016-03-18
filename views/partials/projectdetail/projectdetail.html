@@ -1,0 +1,88 @@
+<!-- <md-toolbar>
+		<md-button class="md-accent" ng-click="edit()">
+			<md-icon md-svg-icon="icons/ic_code_24px.svg"></md-icon>
+			<md-tooltip md-direction="bottom">Edit project source</md-tooltip>
+		</md-button>
+		<md-button class="md-accent" ng-click="save()">
+			<md-icon md-svg-icon="icons/ic_save_24px.svg"></md-icon>
+			<md-tooltip md-direction="bottom">Save project details</md-tooltip>
+		</md-button>
+</md-toolbar> -->
+
+<div align="center" class="partialparent" ng-cloak>
+	<div class="partialcontent">
+		<md-content layout-padding="">
+
+			<form name="userForm">
+			<md-input-container flex="">
+				<label>App Title</label>
+				<input ng-model="appDesc.name" disabled="disabled">
+			</md-input-container>
+
+				<div layout="" layout-sm="column" style="height:170px;">
+					<md-input-container flex="">
+						<div>
+							<table width="100%">
+								<tr style="vertical-align:top;">
+									<td rowspan="3" width="200">
+										<div>
+											<img src="./appicons/{{appKey}}.png" ng-src="{{imageSrc}}" ng-err-src="./appicons/default.png" class="uploadthumbnail"/>
+											<input type="file" ng-file-select="onFileSelect" accept="image/gif, image/jpeg, image/png"/>
+										</div>
+									</td>
+								</tr>
+								<tr><td>
+									<div layout="" layout-sm="column">
+										<md-input-container flex="">
+											<label>App Key</label>
+											<input ng-model="appDesc.appKey" disabled="">
+										</md-input-container>
+									</div>
+								</td></tr>
+								<tr><td>
+									<div layout="" layout-sm="column">
+										<md-input-container flex="">
+											<label>Secret Key</label>
+											<input ng-model="appDesc.secretKey" disabled="">
+										</md-input-container>
+									</div>
+								</td></tr>
+							</table>
+						</div>
+					</md-input-container>
+				</div>
+
+				<md-input-container flex="">
+					<label>Category</label>
+			        <md-select ng-model="appDesc.category">
+		            	<md-option ng-value="ct" ng-repeat="ct in appCategories">
+		            	{{ct}}
+		            	</md-option>
+		        	</md-select>
+				</md-input-container>
+
+				<md-input-container md-no-float="">
+					<label>Description</label>
+					<textarea rows="3" ng-model="appDesc.description"></textarea>
+				</md-input-container>
+
+				<div layout layout-sm="column" layout-margin>
+					<label>Version</label>
+					<md-input-container id="accContainer" flex >
+						<label>Major</label>
+						<input ng-model="appDesc.version.major" placeholder="Major"/>
+					</md-input-container>
+					<md-input-container id="accContainer" flex >
+						<label>Minor</label>
+						<input ng-model="appDesc.version.minor" placeholder="Minor"/>
+					</md-input-container>
+					<md-input-container id="accContainer" flex >
+						<label>Release</label>
+						<input ng-model="appDesc.version.release" disabled="disabled"  placeholder="Release">
+					</md-input-container>
+				</div>
+			</form>
+
+		</md-content>
+	</div>
+</div>
